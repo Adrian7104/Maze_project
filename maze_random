@@ -1,0 +1,47 @@
+import turtle as trtl
+import random as rand
+turt = trtl.Turtle()
+rand = rand.Random()
+wn = trtl.Screen()
+number = 0
+maze_length = []
+
+width = 22
+path_width = 22
+wall_num = 25
+
+door = 20
+barrier = 22
+
+turt.pencolor("black")
+turt.pensize(6)
+turt.speed(0)
+turt.pendown()
+turt.hideturtle()
+
+def element_type():
+  return rand.choice(["barrier","door"])
+for i in range(26):
+  if i%2 == 0 and i != 0:
+    number = number + 22
+  len = rand.randint(0,number)  
+  choice = element_type()
+  if (choice == "door"):
+    turt.forward(len)
+    turt.penup()
+    turt.forward(door)
+    turt.pendown()
+    turt.forward(number-len-door)
+    turt.right(90)   
+  else:   
+    turt.forward(len)
+    turt.right(90)
+    turt.forward(path_width)
+    turt.back(path_width)
+    turt.left(90)
+    turt.forward(number-len)
+    turt.right(90)
+# function calls
+
+wn.mainloop()
+  
